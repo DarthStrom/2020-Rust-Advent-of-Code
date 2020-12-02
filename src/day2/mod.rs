@@ -5,6 +5,13 @@ pub fn num_valid(passwords: &Vec<&str>) -> usize {
         .count()
 }
 
+pub fn num_really_valid(passwords: &Vec<&str>) -> usize {
+    passwords
+        .into_iter()
+        .filter(|&&password| really_valid(password))
+        .count()
+}
+
 fn valid(password: &str) -> bool {
     let mut words = password.split(' ');
     let mut range_parts = words
@@ -22,14 +29,41 @@ fn valid(password: &str) -> bool {
     count >= min && count <= max
 }
 
+fn really_valid(password: &str) -> bool {
+    let mut words = password.split(' ');
+    let mut range_parts = words
+        .next()
+        .unwrap()
+        .split('-')
+        .flat_map(str::parse::<usize>);
+    let pos1 = range_parts.next().unwrap() - 1;
+    let pos2 = range_parts.next().unwrap() - 1;
+
+    let letter = words.next().unwrap().chars().next().unwrap();
+
+    let pass = words.next().unwrap().chars().collect::<Vec<_>>();
+
+    let letter1 = pass[pos1];
+    let letter2 = pass[pos2];
+
+    (letter1 == letter && letter2 != letter) || (letter2 == letter && letter1 != letter)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn example() {
+    fn example1() {
         let passwords = vec!["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"];
 
         assert_eq!(num_valid(&passwords), 2);
+    }
+
+    #[test]
+    fn example2() {
+        let passwords = vec!["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"];
+
+        assert_eq!(num_really_valid(&passwords), 1);
     }
 }
