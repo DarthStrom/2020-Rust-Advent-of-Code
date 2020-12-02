@@ -1,11 +1,11 @@
-pub fn num_valid(passwords: &Vec<&str>) -> usize {
+pub fn solve1(passwords: &Vec<&str>) -> usize {
     passwords
         .into_iter()
         .filter(|&&password| valid(password))
         .count()
 }
 
-pub fn num_really_valid(passwords: &Vec<&str>) -> usize {
+pub fn solve2(passwords: &Vec<&str>) -> usize {
     passwords
         .into_iter()
         .filter(|&&password| really_valid(password))
@@ -57,13 +57,13 @@ mod tests {
     fn example1() {
         let passwords = vec!["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"];
 
-        assert_eq!(num_valid(&passwords), 2);
+        assert_eq!(solve1(&passwords), 2);
     }
 
     #[test]
     fn example2() {
         let passwords = vec!["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"];
 
-        assert_eq!(num_really_valid(&passwords), 1);
+        assert_eq!(solve2(&passwords), 1);
     }
 }

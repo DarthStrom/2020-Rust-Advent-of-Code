@@ -1,4 +1,8 @@
-pub fn solve1(expenses: &Vec<u32>) -> u32 {
+pub fn solve1(lines: &Vec<&str>) -> usize {
+    let expenses = lines
+        .into_iter()
+        .flat_map(|&s| str::parse::<usize>(s))
+        .collect::<Vec<_>>();
     let len = expenses.len();
     for i in 0..len - 1 {
         for j in i + 1..len {
@@ -12,7 +16,11 @@ pub fn solve1(expenses: &Vec<u32>) -> u32 {
     0
 }
 
-pub fn solve2(expenses: &Vec<u32>) -> u32 {
+pub fn solve2(lines: &Vec<&str>) -> usize {
+    let expenses = lines
+        .into_iter()
+        .flat_map(|&s| str::parse::<usize>(s))
+        .collect::<Vec<_>>();
     let len = expenses.len();
     for i in 0..len - 2 {
         for j in i + 1..len - 1 {
@@ -35,14 +43,14 @@ mod tests {
 
     #[test]
     fn example1() {
-        let expenses = vec![1721, 979, 366, 299, 675, 1456];
+        let expenses = vec!["1721", "979", "366", "299", "675", "1456"];
 
         assert_eq!(solve1(&expenses), 514_579);
     }
 
     #[test]
     fn example2() {
-        let expenses = vec![1721, 979, 366, 299, 675, 1456];
+        let expenses = vec!["1721", "979", "366", "299", "675", "1456"];
 
         assert_eq!(solve2(&expenses), 241_861_950);
     }
