@@ -5,6 +5,13 @@ mod day1;
 mod day2;
 mod day3;
 
+macro_rules! print_solution {
+    ($m:ident, $n:expr, $l:expr) => {{
+        println!("Day{}, Part1: {}", $n, $m::solve1($l));
+        println!("Day{}, Part2: {}", $n, $m::solve2($l));
+    }};
+}
+
 fn main() {
     let mut args = args();
     let _executable = args.next().unwrap();
@@ -24,18 +31,9 @@ fn solve(day: u32) {
         let lines = input.lines().collect::<Vec<_>>();
 
         match day {
-            1 => {
-                println!("Day1, Part1: {}", day1::solve1(&lines));
-                println!("Day2, Part2: {}", day1::solve2(&lines));
-            }
-            2 => {
-                println!("Day2, Part1: {}", day2::solve1(&lines));
-                println!("Day2, Part2: {}", day2::solve2(&lines));
-            }
-            3 => {
-                println!("Day3, Part1: {}", day3::solve1(&lines));
-                println!("Day3, Part2: {}", day3::solve2(&lines));
-            }
+            1 => print_solution!(day1, day, &lines),
+            2 => print_solution!(day2, day, &lines),
+            3 => print_solution!(day3, day, &lines),
             _ => unimplemented!(),
         }
     } else {
