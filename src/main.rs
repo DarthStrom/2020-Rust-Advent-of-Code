@@ -3,6 +3,7 @@ use std::fs::read_to_string;
 
 mod day1;
 mod day2;
+mod day3;
 
 fn main() {
     let mut args = args();
@@ -30,6 +31,10 @@ fn solve(day: u32) {
             2 => {
                 println!("Day2, Part1: {}", day2::solve1(&lines));
                 println!("Day2, Part2: {}", day2::solve2(&lines));
+            }
+            3 => {
+                println!("Day3, Part1: {}", day3::solve1(&lines));
+                println!("Day3, Part2: {}", day3::solve2(&lines));
             }
             _ => unimplemented!(),
         }
