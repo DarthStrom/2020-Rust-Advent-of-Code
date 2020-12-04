@@ -4,6 +4,7 @@ use std::fs::read_to_string;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 macro_rules! print_solution {
     ($m:ident, $n:expr, $l:expr) => {{
@@ -34,6 +35,7 @@ fn solve(day: u32) {
             1 => print_solution!(day1, day, &lines),
             2 => print_solution!(day2, day, &lines),
             3 => print_solution!(day3, day, &lines),
+            4 => print_solution!(day4, day, &lines),
             _ => unimplemented!(),
         }
     } else {
