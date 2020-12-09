@@ -1,5 +1,3 @@
-use std::ops::Range;
-
 pub fn solve1(lines: &Vec<&str>) -> usize {
     let nums = lines.iter().flat_map(|&s| s.parse::<usize>()).collect();
 
@@ -56,10 +54,13 @@ fn get_sum_range_to(
 ) -> Result<(usize, usize), ()> {
     for i in begin_index..nums.len() - 1 {
         let range = &nums[begin_index..i];
-        if range.iter().sum::<usize>() == target {
+        let sum = range.iter().sum::<usize>();
+        if sum == target {
             let min = range.iter().min().unwrap();
             let max = range.iter().max().unwrap();
             return Ok((*min, *max));
+        } else if sum > target {
+            return Err(());
         }
     }
 
