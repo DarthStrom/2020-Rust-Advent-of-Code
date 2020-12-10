@@ -1,15 +1,16 @@
 use std::env::args;
 use std::fs::read_to_string;
 
-mod day1;
-mod day2;
-mod day3;
-mod day4;
-mod day5;
-mod day6;
-mod day7;
-mod day8;
-mod day9;
+mod day01;
+mod day02;
+mod day03;
+mod day04;
+mod day05;
+mod day06;
+mod day07;
+mod day08;
+mod day09;
+mod day10;
 
 macro_rules! print_solution {
     ($m:ident, $n:expr, $l:expr) => {{
@@ -33,19 +34,20 @@ fn main() {
 }
 
 fn solve(day: u32) {
-    if let Ok(input) = read_to_string(format!("./inputs/day{}.txt", day)) {
+    if let Ok(input) = read_to_string(format!("./inputs/day{:02}.txt", day)) {
         let lines = input.lines().collect::<Vec<_>>();
 
         match day {
-            1 => print_solution!(day1, day, &lines),
-            2 => print_solution!(day2, day, &lines),
-            3 => print_solution!(day3, day, &lines),
-            4 => print_solution!(day4, day, &lines),
-            5 => print_solution!(day5, day, &lines),
-            6 => print_solution!(day6, day, &lines),
-            7 => print_solution!(day7, day, &lines),
-            8 => print_solution!(day8, day, &lines),
-            9 => print_solution!(day9, day, &lines),
+            1 => print_solution!(day01, day, &lines),
+            2 => print_solution!(day02, day, &lines),
+            3 => print_solution!(day03, day, &lines),
+            4 => print_solution!(day04, day, &lines),
+            5 => print_solution!(day05, day, &lines),
+            6 => print_solution!(day06, day, &lines),
+            7 => print_solution!(day07, day, &lines),
+            8 => print_solution!(day08, day, &lines),
+            9 => print_solution!(day09, day, &lines),
+            10 => print_solution!(day10, day, &lines),
             _ => unimplemented!(),
         }
     } else {
