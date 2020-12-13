@@ -13,6 +13,7 @@ mod day09;
 mod day10;
 mod day11;
 mod day12;
+mod day13;
 
 macro_rules! print_solution {
     ($m:ident, $n:expr, $l:expr) => {{
@@ -52,6 +53,7 @@ fn solve(day: u32) {
             10 => print_solution!(day10, day, &lines),
             11 => print_solution!(day11, day, &lines),
             12 => print_solution!(day12, day, &lines),
+            13 => print_solution!(day13, day, &lines),
             _ => unimplemented!(),
         }
     } else {
